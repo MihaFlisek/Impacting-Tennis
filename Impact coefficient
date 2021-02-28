@@ -1,0 +1,29 @@
+import random
+import numpy
+import math
+mass=353
+twistweight=14
+swingweight=360
+balance=32.3
+racket_lenght=68.5
+H=3/4 * racket_lenght #use this height for racket specific ICO
+hitting_area_center_height=50 #H=hitting_area_center_height for player specific ICO
+I_x=swingweight+20*balance*0.001*mass-100*mass*0.001
+ball_weight=57
+
+def average(R=10, P = hitting_area_center_height-balance, l_x=I_x, l_y = twistweight, steps = 10000, m = mass*0.001):
+        values = []
+        for poskus in range(steps):
+            L = random.randrange(0, R)
+            theta = random.uniform(0, 2*math.pi)
+
+            x_coordinate = L * math.cos(theta)
+            y_coordinate = L * math.sin(theta) + P
+
+            value = ((1/m) + ((y_coordinate**2)/l_x) + ((x_coordinate**2)/l_y))**-1
+            values.append(value)
+
+        return numpy.mean(values)
+print("Average effective mass of the hitting area:", average()*1000)
+print("Player specific ICO:", average()*1000/ball_weight)
+    
