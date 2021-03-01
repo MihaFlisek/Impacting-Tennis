@@ -1,14 +1,14 @@
 import random
 import numpy
 import math
-mass=353
+mass=318
 twistweight=14
-swingweight=360
-balance=32.3
+swingweight=318
+balance=33.2
 racket_lenght=68.5
 H=3/4 * racket_lenght #use this height for racket specific ICO
 hitting_area_center_height=50 #H=hitting_area_center_height for player specific ICO
-I_x=swingweight+20*balance*0.001*mass-100*mass*0.001
+I_x=swingweight-0.001*mass*(balance-10.16)**2
 ball_weight=57
 
 def average(R=10, P = hitting_area_center_height-balance, l_x=I_x, l_y = twistweight, steps = 10000, m = mass*0.001):
@@ -24,6 +24,6 @@ def average(R=10, P = hitting_area_center_height-balance, l_x=I_x, l_y = twistwe
             values.append(value)
 
         return numpy.mean(values)
-print("Average effective mass of the hitting area:", average()*1000)
+print("Average effective mass of the player specific hitting area:", average()*1000)
 print("Player specific ICO:", average()*1000/ball_weight)
     
