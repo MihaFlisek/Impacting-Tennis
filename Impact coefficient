@@ -6,7 +6,7 @@ twistweight=14
 swingweight=318
 balance=33.2
 racket_lenght=68.5
-H=3/4 * racket_lenght #use this height for racket specific ICO
+H=3/4 * racket_lenght #use this height for racket specific AIM and ICO
 hitting_area_center_height=50 #H=hitting_area_center_height for player specific ICO
 I_x=swingweight-0.001*mass*(balance-10.16)**2
 ball_weight=57
@@ -24,6 +24,5 @@ def average(R=10, P = hitting_area_center_height-balance, l_x=I_x, l_y = twistwe
             values.append(value)
 
         return numpy.mean(values)
-print("Average effective mass of the player specific hitting area:", average()*1000)
+print("Average Impact mass - AIM of the player specific hitting area:", average()*1000)
 print("Player specific ICO:", average()*1000/ball_weight)
-    
